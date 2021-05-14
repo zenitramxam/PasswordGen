@@ -1,1 +1,2 @@
-# PasswordGen
+# Password Generator
+This application uses html and css but is made dynamic using Javascript. When the bright red generate button is used, a prompt and series of confirms are used to gather the users' criteria. Followed after is Javascript creating a random password using the criteria the user has chosen, sending the newly desired password to the textbox.

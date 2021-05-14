@@ -17,13 +17,17 @@ console.log(upCase);
 console.log(numer);
 console.log(spCh);
 
+generateBtn.addEventListener("click", function () {
+  var pass = writePassword();
+  document.getElementById('password').placeholder = pass;
+ }); 
+
 function writePassword() {
   var pLeng = parseInt(prompt('Choose a password length between 8 - 128 '));
   if (pLeng < 8 || pLeng > 128 || !pLeng) {
     alert("Password length is invalid. Please provide a password length between 8 - 128");
     return;
-  }
-  else {
+  } else {
     var lower = confirm('Would you like Lowercase letters in your password?');
     var upper = confirm('Would you like Uppercase letters in your password?');
     var numb = confirm('Would you like numbers in your password?');
@@ -31,50 +35,35 @@ function writePassword() {
   };
   if (!lower && !upper && !numb && !spCo) {
     options = alert("Please choose from the options given.");
-  }
-  else if (lower && upper && numb && spCo) {
+  } else if (lower && upper && numb && spCo) {
     options = lowCase.concat(upCase, numer, spCh);
-  }
-  else if (lower && upper && numb && !spCo) {
+  } else if (lower && upper && numb && !spCo) {
     options = lowCase.concat(upCase, numer);
-  }
-  else if (lower && upper && !numb && !spCo) {
+  } else if (lower && upper && !numb && !spCo) {
     options = lowCase.concat(upCase);
-  }
-  else if (lower && !upper && !numb && !spCo) {
+  } else if (lower && !upper && !numb && !spCo) {
     options = lowCase;
-  }
-  else if (lower && upper && !numb && spCo) {
+  } else if (lower && upper && !numb && spCo) {
     options = spCh.concat(upCase, lowCase);
-  }
-  else if (lower && !upper && !numb && spCo) {
+  } else if (lower && !upper && !numb && spCo) {
     options = spCh.concat(lowCase);
-  }
-  else if (!lower && !upper && !numb && spCo) {
+  } else if (!lower && !upper && !numb && spCo) {
     options = spCh;
-  }
-  else if (lower && !upper && numb && spCo) {
+  } else if (lower && !upper && numb && spCo) {
     options = numer.concat(lowCase, spCh);
-  }
-  else if (!lower && !upper && numb && spCo) {
+  } else if (!lower && !upper && numb && spCo) {
     options = numer.concat(spCh);
-  }
-  else if (!lower && !upper && numb && !spCo) {
+  } else if (!lower && !upper && numb && !spCo) {
     options = numer;
-  }
-  else if (!lower && upper && numb && spCo) {
+  } else if (!lower && upper && numb && spCo) {
     options = upCase.concat(numer, spCh);
-  }
-  else if (!lower && upper && numb && !spCo) {
+  } else if (!lower && upper && numb && !spCo) {
     options = upCase.concat(numer);
-  }
-  else if (!lower && upper && !numb && !spCo) {
+  } else if (!lower && upper && !numb && !spCo) {
     options = upCase;
-  }
-  else if (!lower && upper && numb && !spCo) {
+  } else if (!lower && upper && numb && !spCo) {
     options = upCase.concat(numer);
-  }
-  else if (lower && !upper && numb && !spCo) {
+  } else if (lower && !upper && numb && !spCo) {
     options = lowCase.concat(numer);
   };
   var password = [];
@@ -83,4 +72,11 @@ function writePassword() {
     var possOptions = options[Math.floor(Math.random() * options.length)];
     password.push(possOptions);
   }
+ var pass = password.join('');
+ UserInput(pass);
+ return pass;
+}
+ 
+function UserInput(pass) {
+ document.getElementById('password').textContent = pass;
 }
